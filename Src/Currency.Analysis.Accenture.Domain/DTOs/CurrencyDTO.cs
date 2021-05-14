@@ -14,13 +14,13 @@ namespace Currency.Analysis.Accenture.Domain.DTOs
         public decimal Value { get; set; }
 
         [Required]
-        [Range(1, 999999999)]
+        [Range(1, 9)]
         [Column(TypeName = "decimal")]
         [Display(Name = "Moéda a ser aplicada")]
         public int Applied { get; set; }
 
         [Required]
-        [Range(1, 999999999)]
+        [Range(1, 9)]
         [Column(TypeName = "decimal")]
         [Display(Name = "Moéda de troca")]
         public int Replacement { get; set; }

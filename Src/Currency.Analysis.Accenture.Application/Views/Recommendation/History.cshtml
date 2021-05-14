@@ -22,26 +22,32 @@
                 <th>
                     @Html.DisplayNameFor(model => model.ReplacementName)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OutputValue)
+                </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Value)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AppliedName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ReplacementName)
-                    </td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@item.Id" id="update-button">Detalhes</a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppliedName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReplacementName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OutputValue)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" id="update-button">Detalhes</a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

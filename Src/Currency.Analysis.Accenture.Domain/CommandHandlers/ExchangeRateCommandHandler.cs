@@ -42,7 +42,7 @@ namespace Currency.Analysis.Accenture.Domain.CommandHandlers
                     value: command.Value,
                     applied: command.Applied,
                     replacement: command.Replacement,
-                    date: $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}",
+                    date: $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year} às {DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second} hrs",
                     outputValue: Exchangerate * (decimal)command.Value,
                     appliedName: _exchangeRateService.GetCurrencyName(command.Applied),
                     replacementName: _exchangeRateService.GetCurrencyName(command.Replacement)
