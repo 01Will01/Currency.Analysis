@@ -7,6 +7,6 @@ namespace Currency.Analysis.Accenture.Domain.DTOs
     public class MessariExchangeRateDTO
     {
         public MessariStatusDTO Status { get; set; }
-        public IEnumerable<MessariDataDTO> Data {get; set;}
+        public List<MessariDataDTO> Data {get; set;}
     }
 }

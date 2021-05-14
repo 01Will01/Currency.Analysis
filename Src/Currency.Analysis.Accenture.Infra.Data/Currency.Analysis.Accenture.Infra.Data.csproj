@@ -13,8 +13,4 @@
     <ProjectReference Include="..\Currency.Analysis.Accenture.Domain\Currency.Analysis.Accenture.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>

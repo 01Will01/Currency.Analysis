@@ -1,16 +1,18 @@
 ﻿using Currency.Analysis.Accenture.Domain.Commands;
 using Currency.Analysis.Accenture.Domain.DTOs;
+using Currency.Analysis.Accenture.Domain.Entities;
 using Currency.Analysis.Accenture.Domain.Interfaces;
 using Currency.Analysis.Accenture.Domain.Interfaces.Services;
 using Currency.Analysis.Accenture.Shared;
 using Currency.Analysis.Accenture.Shared.Commands;
 using Currency.Analysis.Accenture.Shared.Handlers.Interfaces;
+using System;
 using System.Threading.Tasks;
 
 namespace Currency.Analysis.Accenture.Domain.CommandHandlers
 {
 
-    public class ExchangeRateCommandHandler: IHandler<ExchangeResgisterCommand>
+    public class ExchangeRateCommandHandler : IHandler<ExchangeResgisterCommand>
     {
         private readonly IExchangeRateQuery _exchangeRateQuery;
         private readonly IExchangeRateService _exchangeRateService;
@@ -29,9 +31,26 @@ namespace Currency.Analysis.Accenture.Domain.CommandHandlers
 
             string type = _exchangeRateService.GetType(command.Applied);
 
-            MessariExchangeRateDTO data =  _exchangeRateQuery.GetOfficial(Settings.URLIntegrationOfficial, type);
+            MessariExchangeRateDTO messari = _exchangeRateQuery.GetOfficial(Settings.URLIntegrationOfficial, type);
 
-            return new GenericCommandResult(true, "Valores calculados, troca concluída com sucesso! ", new { });
+            if (messari is null) { return new GenericCommandResult(false, "Taxa de cambio não localizada! ;(", new { }); }
+
+            decimal Exchangerate = _exchangeRateService.GetExchangeRate(command.Replacement, command.Applied, messari);
+
+            Currencies currencies =
+                new Currencies(
+                    value: command.Value,
+                    applied: command.Applied,
+                    replacement: command.Replacement,
+                    date: $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}",
+                    outputValue: Exchangerate * (decimal)command.Value,
+                    appliedName: _exchangeRateService.GetCurrencyName(command.Applied),
+                    replacementName: _exchangeRateService.GetCurrencyName(command.Replacement)
+                    );
+
+            await _exchangeRateService.Register(currencies);
+
+            return new GenericCommandResult(true, "Valores calculados, troca concluída com sucesso!", new { });
         }
     }
 }

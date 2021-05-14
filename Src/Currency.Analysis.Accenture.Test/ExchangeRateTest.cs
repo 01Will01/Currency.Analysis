@@ -10,9 +10,9 @@ namespace Currency.Analysis.Accenture.Test
         [TestMethod]
         public void get()
         {
-            ExchangeRateQuery _exchangeRate = new ExchangeRateQuery();
+            //ExchangeRateQuery _exchangeRate = new ExchangeRateQuery();
 
-            _exchangeRate.Get(Settings.URLIntegration, Settings.URLIntegration, Settings.OptionsIntegration);
+            //_exchangeRate.Get(Settings.URLIntegration, Settings.URLIntegration, Settings.OptionsIntegration);
         }
     }
 }

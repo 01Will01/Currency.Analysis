@@ -8,6 +8,8 @@ namespace Currency.Analysis.Accenture.Infra.Data.Queries
 {
     public class ExchangeRateQuery : IExchangeRateQuery
     {
+       
+       
         public ExchangeRateDTO Get(string url, string token, string cunrrencies)
         {
             var URLToken = new RestClient(url + "?access_key=" + token + "&symbols" + cunrrencies);
