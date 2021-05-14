@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Currency.Analysis.Accenture
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Currency.Analysis.Accenture.Domain", "Src\Currency.Analysis.Accenture.Domain\Currency.Analysis.Accenture.Domain.csproj", "{FB68EC89-F6F3-454F-A7E2-A32B815E3F04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Currency.Analysis.Accenture.Test", "Src\Currency.Analysis.Accenture.Test\Currency.Analysis.Accenture.Test.csproj", "{A5DE9D1F-C35C-4B6A-9ED2-2C8E4F386CB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Currency.Analysis.Accenture.Test", "Src\Currency.Analysis.Accenture.Test\Currency.Analysis.Accenture.Test.csproj", "{A5DE9D1F-C35C-4B6A-9ED2-2C8E4F386CB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Currency.Analysis.Accenture.Application", "Src\Currency.Analysis.Accenture.Application\Currency.Analysis.Accenture.Application.csproj", "{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +143,26 @@ Global
 		{A5DE9D1F-C35C-4B6A-9ED2-2C8E4F386CB3}.Release|x64.Build.0 = Release|Any CPU
 		{A5DE9D1F-C35C-4B6A-9ED2-2C8E4F386CB3}.Release|x86.ActiveCfg = Release|Any CPU
 		{A5DE9D1F-C35C-4B6A-9ED2-2C8E4F386CB3}.Release|x86.Build.0 = Release|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Debug|ARM.Build.0 = Debug|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Debug|x64.Build.0 = Debug|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Debug|x86.Build.0 = Debug|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Release|ARM.ActiveCfg = Release|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Release|ARM.Build.0 = Release|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Release|ARM64.Build.0 = Release|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Release|x64.ActiveCfg = Release|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Release|x64.Build.0 = Release|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Release|x86.ActiveCfg = Release|Any CPU
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -153,6 +175,7 @@ Global
 		{59762796-72C0-4BFD-99EE-030FB8BA666E} = {115DF603-D7E1-4FF6-B4DD-786CE3A8A091}
 		{FB68EC89-F6F3-454F-A7E2-A32B815E3F04} = {568380A5-F7BB-444D-B355-63C5BE6E3DDE}
 		{A5DE9D1F-C35C-4B6A-9ED2-2C8E4F386CB3} = {F3E0629B-F933-484D-9CCC-4B6E1B342E6B}
+		{F897C68B-44A6-46D1-ABD1-8A2FA465EDF1} = {AD842C01-22A5-41B7-877D-B954BA02E86F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C468897-8CB9-41A0-9407-058CA1922948}

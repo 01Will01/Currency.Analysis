@@ -12,7 +12,7 @@ namespace Currency.Analysis.Accenture.Test
         {
             ExchangeRateQuery _exchangeRate = new ExchangeRateQuery();
 
-            _exchangeRate.Get(Settings.URLIntegration, Settings.URLIntegration);
+            _exchangeRate.Get(Settings.URLIntegration, Settings.URLIntegration, Settings.OptionsIntegration);
         }
     }
 }
