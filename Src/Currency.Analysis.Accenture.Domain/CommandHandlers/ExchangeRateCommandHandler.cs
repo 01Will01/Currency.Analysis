@@ -29,14 +29,13 @@ namespace Currency.Analysis.Accenture.Domain.CommandHandlers
 
             if (command.Invalid) return new GenericCommandResult(false, "Valores de entrada inválidos", new { });
 
-            string type = _exchangeRateService.GetType(command.Applied);
+            string type = _exchangeRateService.GetType(command.Replacement);
 
             MessariExchangeRateDTO messari = _exchangeRateQuery.GetOfficial(Settings.URLIntegrationOfficial, type);
 
             if (messari is null) { return new GenericCommandResult(false, "Taxa de cambio não localizada! ;(", new { }); }
 
             decimal Exchangerate = _exchangeRateService.GetExchangeRate(command.Replacement, command.Applied, messari);
-
             Currencies currencies =
                 new Currencies(
                     value: command.Value,

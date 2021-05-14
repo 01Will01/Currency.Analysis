@@ -39,17 +39,16 @@ namespace Currency.Analysis.Accenture.Domain.Services
             decimal value = 0;
             string symbol = "";
 
-            if (typeExchangeRate == (int)CurrencyTypes.USD) { symbol = "USD"; }
-            else if (typeExchangeRate == (int)CurrencyTypes.BTC) { symbol = "BTC"; }
-            else if (typeExchangeRate == (int)CurrencyTypes.ETH) { symbol = "ETH"; }
+            if (typeApplied == (int)CurrencyTypes.BTC) { symbol = "BTC"; }
+            else if (typeApplied == (int)CurrencyTypes.ETH) { symbol = "ETH"; }
 
             messari.Data.ForEach(item =>
             {
                 if(value > 0) { return; }
 
-                if (typeApplied == (int)CurrencyTypes.USD && symbol == item.Symbol) { value = item.Metrics.market_data.price_usd; }
-                else if (typeApplied == (int)CurrencyTypes.BTC && symbol == item.Symbol) { value = item.Metrics.market_data.price_btc; }
-                else if (typeApplied == (int)CurrencyTypes.ETH && symbol == item.Symbol) { value = item.Metrics.market_data.price_eth; }
+                if (typeExchangeRate == (int)CurrencyTypes.USD && symbol == item.Symbol) { value = item.Metrics.market_data.price_usd; }
+                else if (typeExchangeRate == (int)CurrencyTypes.BTC && symbol == item.Symbol) { value = item.Metrics.market_data.price_btc; }
+                else if (typeExchangeRate == (int)CurrencyTypes.ETH && symbol == item.Symbol) { value = item.Metrics.market_data.price_eth; }
             });
 
             return value;

@@ -39,6 +39,7 @@ namespace Currency.Analysis.Accenture.Infra.Data.Queries
             data.Rates.ZEC = Decimal.Parse("0.00564454");
 
             return data;
+            // Método descartado, há outro swagger para obter as taxas cambios atualizadas. 
         }
 
         public MessariExchangeRateDTO GetOfficial(string url, string type)
