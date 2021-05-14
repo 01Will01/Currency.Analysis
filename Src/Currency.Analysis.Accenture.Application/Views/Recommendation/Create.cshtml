@@ -4,43 +4,45 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Adicionar</h1>
 
-<h4>CurrencyDTO</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="group-step">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group step">
+                    <label asp-for="Value" class="control-label"></label>
+                    <input type="number" min="0" asp-for="Value" class="form-control" />
+                    <span asp-validation-for="Value" class="text-danger"></span>
+                </div>
+                <div class="form-group step">
+                    <label asp-for="Applied" class="control-label"></label>
+                    <select asp-for="Applied">
+                        <option>--</option>
+                        <option value="1"> Dolar dos Estados Unidos </option>
+                        <option value="2"> BitCoin </option>
+                        <option value="3"> Ethereum </option>
+                    </select>
+                    <span asp-validation-for="Applied" class="text-danger"></span>
+                </div>
+                <div class="form-group step">
+                    <label asp-for="Replacement" class="control-label"></label>
+                    <select asp-for="Replacement">
+                        <option>--</option>
+                        <option value="1"> Dolar dos Estados Unidos </option>
+                        <option value="2"> BitCoin </option>
+                        <option value="3"> Ethereum </option>
+                    </select>
+                    <span asp-validation-for="Replacement" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group">
-                <label asp-for="RateValue" class="control-label"></label>
-                <input asp-for="RateValue" class="form-control" />
-                <span asp-validation-for="RateValue" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Base" class="control-label"></label>
-                <input asp-for="Base" class="form-control" />
-                <span asp-validation-for="Base" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Value" class="control-label"></label>
-                <input asp-for="Value" class="form-control" />
-                <span asp-validation-for="Value" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Avaliar" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

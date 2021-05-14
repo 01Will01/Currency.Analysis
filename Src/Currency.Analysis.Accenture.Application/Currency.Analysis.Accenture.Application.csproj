@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Currency.Analysis.Accenture.Test\Currency.Analysis.Accenture.Test.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>

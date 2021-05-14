@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Currency.Analysis.Accenture.Domain.DTOs;
 using Currency.Analysis.Accenture.Infra.Data.DataContext;
+using Currency.Analysis.Accenture.Domain.CommandHandlers;
+using Currency.Analysis.Accenture.Domain.Commands;
 
 namespace Currency.Analysis.Accenture.Application.Controllers
 {
@@ -19,13 +21,11 @@ namespace Currency.Analysis.Accenture.Application.Controllers
             _context = context;
         }
 
-        // GET: Recommendation
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> History()
         {
             return View(await _context.Currency.ToListAsync());
         }
 
-        // GET: Recommendation/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -43,30 +43,27 @@ namespace Currency.Analysis.Accenture.Application.Controllers
             return View(currencyDTO);
         }
 
-        // GET: Recommendation/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Recommendation/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,RateValue,Base,Value,Id")] CurrencyDTO currencyDTO)
+        public async Task<IActionResult> Create(CurrencyDTO data, [FromServices] ExchangeRateCommandHandler handler)
         {
+            ExchangeResgisterCommand command = new ExchangeResgisterCommand(data.Value, data.Applied, data.Replacement);
+
+            await handler.Handle(command);
             if (ModelState.IsValid)
             {
-                currencyDTO.Id = Guid.NewGuid();
-                _context.Add(currencyDTO);
+                _context.Add(data);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(History));
             }
-            return View(currencyDTO);
+            return View(data);
         }
 
-        // GET: Recommendation/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -82,12 +79,9 @@ namespace Currency.Analysis.Accenture.Application.Controllers
             return View(currencyDTO);
         }
 
-        // POST: Recommendation/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Name,RateValue,Base,Value,Id")] CurrencyDTO currencyDTO)
+        public async Task<IActionResult> Edit(Guid id, CurrencyDTO currencyDTO)
         {
             if (id != currencyDTO.Id)
             {
@@ -112,12 +106,11 @@ namespace Currency.Analysis.Accenture.Application.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(History));
             }
             return View(currencyDTO);
         }
 
-        // GET: Recommendation/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -135,7 +128,6 @@ namespace Currency.Analysis.Accenture.Application.Controllers
             return View(currencyDTO);
         }
 
-        // POST: Recommendation/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
@@ -143,7 +135,7 @@ namespace Currency.Analysis.Accenture.Application.Controllers
             var currencyDTO = await _context.Currency.FindAsync(id);
             _context.Currency.Remove(currencyDTO);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(History));
         }
 
         private bool CurrencyDTOExists(Guid id)

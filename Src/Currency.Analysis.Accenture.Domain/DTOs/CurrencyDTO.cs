@@ -10,25 +10,38 @@ namespace Currency.Analysis.Accenture.Domain.DTOs
 
         [Required]
         [Column(TypeName = "string")]
-        [Display(Name = "Nome")]
-        public string Name { get; set; }
-
-        [Required]
-        [Range(1, 999999999)]
-        [Column(TypeName = "decimal")]
-        [Display(Name = "Valor aplicado")]
-        public decimal RateValue { get; set; }
-
-        [Required]
-        [Column(TypeName = "string")]
-        [Display(Name = "Nome")]
-        public string Base { get; set; }
-
-        [Required]
-        [Range(1, 999999999)]
-        [Column(TypeName = "decimal")]
-        [Display(Name = "Valor Final")]
+        [Display(Name = "Valor de entrada")]
         public decimal Value { get; set; }
+
+        [Required]
+        [Range(1, 999999999)]
+        [Column(TypeName = "decimal")]
+        [Display(Name = "Moéda a ser aplicada")]
+        public int Applied { get; set; }
+
+        [Required]
+        [Range(1, 999999999)]
+        [Column(TypeName = "decimal")]
+        [Display(Name = "Moéda de troca")]
+        public int Replacement { get; set; }
+
+        [Column(TypeName = "string")]
+        [Display(Name = "Data")]
+        public string Date { get; set; }
+
+        [Column(TypeName = "decimal")]
+        [Display(Name = "Valor a receber")]
+        public decimal? OutputValue { get; set; }
+
+        [Column(TypeName = "string")]
+        [Display(Name = "Moéda aplicada")]
+        public string AppliedName { get; set; }
+
+        [Column(TypeName = "string")]
+        [Display(Name = "Moéda de troca")]
+        public string ReplacementName { get; set; }
+
+
     }
 }
 

@@ -8,5 +8,7 @@ namespace Currency.Analysis.Accenture.Shared
         public const string URLIntegration = "http://api.exchangeratesapi.io/v1/latest";
 
         public const string OptionsIntegration = "BTC,BTH,XMR,ZEC,BCH";
+
+        public const string URLIntegrationOfficial = "https://data.messari.io/api/v2/assets?fields=id,slug,symbol,metrics/market_data/";
     }
 }

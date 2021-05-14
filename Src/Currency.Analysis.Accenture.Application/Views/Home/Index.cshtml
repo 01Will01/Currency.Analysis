@@ -1,7 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+
+    var greetingMsg = "";
+    var currentHour = DateTime.UtcNow.AddHours(-3).Hour;
+
+    if (currentHour >= 6 && currentHour < 12)
+    {
+        greetingMsg = "Bom dia,";
+    }
+    else if (currentHour >= 12 && currentHour < 18)
+    {
+        greetingMsg = "Boa tarde,";
+    }
+    else
+    {
+        greetingMsg = "Boa noite,";
+    }
+
+    greetingMsg += " seja bem-vindo!";
+    ViewBag.greetingMsg = greetingMsg;
 }
 
+
 <div class="text-center">
-    <h1 class="display-4">Sejá bem vindo!</h1>
+    <h1 class="display-4">@ViewBag.greetingMsg</h1>
 </div>
