@@ -1,5 +1,8 @@
+using Currency.Analysis.Accenture.Infra.Data.DataContext;
+using Currency.Analysis.Accenture.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,6 +22,8 @@ namespace Currency.Analysis.Accenture.Application
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<CAASystemDataContext>(opt => opt.UseInMemoryDatabase("Database"));
+            InjectionOfContainer.ConfigureInjection(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

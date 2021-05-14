@@ -1,7 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Currency.Analysis.Accenture.Domain\Currency.Analysis.Accenture.Domain.csproj" />
+    <ProjectReference Include="..\Currency.Analysis.Accenture.Infra.Data\Currency.Analysis.Accenture.Infra.Data.csproj" />
+    <ProjectReference Include="..\Currency.Analysis.Accenture.Infra.IoC\Currency.Analysis.Accenture.Infra.IoC.csproj" />
+    <ProjectReference Include="..\Currency.Analysis.Accenture.Shared\Currency.Analysis.Accenture.Shared.csproj" />
+    <ProjectReference Include="..\Currency.Analysis.Accenture.Test\Currency.Analysis.Accenture.Test.csproj" />
+  </ItemGroup>
 
 </Project>
