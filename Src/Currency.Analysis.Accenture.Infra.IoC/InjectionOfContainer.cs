@@ -24,11 +24,11 @@ namespace Currency.Analysis.Accenture.Infra.IoC
             services.AddScoped<ExchangeRateCommandHandler, ExchangeRateCommandHandler>();
 
             // Services
-            services.AddScoped<IExchangeRateService, ExchangeRateService>();
+            services.AddScoped<IExchangeService, ExchangeService>();
 
             // Consultas
-            services.AddScoped<IExchangeRateQuery, ExchangeRateQuery>();
-            services.AddScoped<ICurrencyExchangeQuery, CurrencyExchangeQuery>();
+            services.AddScoped<IExchangeCurrencyHttpQuery, ExchangeCurrencyHttpQuery>();
+            services.AddScoped<IExchangeCurrencyQuery, ExchangeCurrencyQuery>();
 
             // Repositorios
             services.AddScoped<ICurrencyExchangeRepository, CurrencyExchangeRepository>();

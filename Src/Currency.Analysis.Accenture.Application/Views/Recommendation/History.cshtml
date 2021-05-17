@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "History";
+
+    
 }
 
 <h1>Hitórico</h1>
@@ -17,10 +19,10 @@
                     @Html.DisplayNameFor(model => model.Value)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.AppliedName)
+                    @Html.DisplayNameFor(model => model.Applied)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ReplacementName)
+                    @Html.DisplayNameFor(model => model.Replacement)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.OutputValue)
@@ -36,10 +38,10 @@
                     @Html.DisplayFor(modelItem => item.Value)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.AppliedName)
+                    @Html.DisplayFor(modelItem => item.Applied.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ReplacementName)
+                    @Html.DisplayFor(modelItem => item.Replacement.Name)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.OutputValue)

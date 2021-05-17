@@ -14,10 +14,10 @@ namespace Currency.Analysis.Accenture.Domain.CommandHandlers
 
     public class ExchangeRateCommandHandler : IHandler<ExchangeResgisterCommand>
     {
-        private readonly IExchangeRateQuery _exchangeRateQuery;
-        private readonly IExchangeRateService _exchangeRateService;
+        private readonly IExchangeCurrencyHttpQuery _exchangeRateQuery;
+        private readonly IExchangeService _exchangeRateService;
 
-        public ExchangeRateCommandHandler(IExchangeRateQuery exchangeRateQuery, IExchangeRateService exchangeRateService)
+        public ExchangeRateCommandHandler(IExchangeCurrencyHttpQuery exchangeRateQuery, IExchangeService exchangeRateService)
         {
             _exchangeRateQuery = exchangeRateQuery;
             _exchangeRateService = exchangeRateService;
@@ -29,22 +29,21 @@ namespace Currency.Analysis.Accenture.Domain.CommandHandlers
 
             if (command.Invalid) return new GenericCommandResult(false, "Valores de entrada inválidos", new { });
 
-            string type = _exchangeRateService.GetType(command.Replacement);
+            CoinloreExchangeRateDTO coinlore = await _exchangeRateQuery.GetDataExchangeRate(Settings.COINLORE_EXCHANGE_RATE_URL);
 
-            MessariExchangeRateDTO messari = _exchangeRateQuery.GetOfficial(Settings.URLIntegrationOfficial, type);
+            if (coinlore is null) { return new GenericCommandResult(false, "Taxa de cambio não localizada! ;(", new { }); }
 
-            if (messari is null) { return new GenericCommandResult(false, "Taxa de cambio não localizada! ;(", new { }); }
+            decimal Exchangerate = _exchangeRateService.GetExchangeRate(command.Replacement.Symbol, command.Applied.Symbol, coinlore);
 
-            decimal Exchangerate = _exchangeRateService.GetExchangeRate(command.Replacement, command.Applied, messari);
             Currencies currencies =
                 new Currencies(
                     value: command.Value,
-                    applied: command.Applied,
-                    replacement: command.Replacement,
+                    appliedSymbol: command.Applied.Symbol,
+                    replacementSymbol: command.Replacement.Symbol,
                     date: $"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year} às {DateTime.Now.Hour}:{DateTime.Now.Minute}:{DateTime.Now.Second} hrs",
                     outputValue: Exchangerate * (decimal)command.Value,
-                    appliedName: _exchangeRateService.GetCurrencyName(command.Applied),
-                    replacementName: _exchangeRateService.GetCurrencyName(command.Replacement)
+                    appliedName: command.Applied.Name,
+                    replacementName: command.Replacement.Name
                     );
 
             await _exchangeRateService.Register(currencies);

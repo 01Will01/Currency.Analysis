@@ -22,6 +22,7 @@ namespace Currency.Analysis.Accenture.Application
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddMemoryCache();
             services.AddDbContext<CAASystemDataContext>(opt => opt.UseInMemoryDatabase("Database"));
             InjectionOfContainer.ConfigureInjection(services);
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Currency.Analysis.Accenture.Domain.Interfaces.Queries
 {
-   public  interface ICurrencyExchangeQuery
+   public  interface IExchangeCurrencyQuery
     {
         Task<List<CurrencyDTO>> GetAll();
 

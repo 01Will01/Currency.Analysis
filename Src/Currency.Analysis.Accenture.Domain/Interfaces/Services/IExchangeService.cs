@@ -5,13 +5,9 @@ using System.Threading.Tasks;
 
 namespace Currency.Analysis.Accenture.Domain.Interfaces.Services
 {
-    public interface IExchangeRateService
+    public interface IExchangeService
     {
-        string GetType(int? type);
-
-        decimal GetExchangeRate(int? typeExchangeRate, int? typeApplied, MessariExchangeRateDTO messari);
-
-        string GetCurrencyName(int? type);
+        decimal GetExchangeRate(string typeExchangeRate, string typeApplied, CoinloreExchangeRateDTO coinlore);
         Task Register(Currencies data);
     }
 }

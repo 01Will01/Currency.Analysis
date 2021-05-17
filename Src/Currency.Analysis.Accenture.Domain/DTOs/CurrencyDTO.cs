@@ -1,5 +1,7 @@
-﻿using Currency.Analysis.Accenture.Shared.Entities;
+﻿using Currency.Analysis.Accenture.Domain.DTOs.Relationships;
+using Currency.Analysis.Accenture.Shared.Entities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,13 +17,13 @@ namespace Currency.Analysis.Accenture.Domain.DTOs
 
         [Required]
         [Column(TypeName = "decimal")]
-        [Display(Name = "Moéda  a ser aplicada")]
-        public int Applied { get; set; }
+        [Display(Name = "Moéda de entrada")]
+        public CurrencyNameDTO Applied { get; set; }
 
         [Required]
         [Column(TypeName = "decimal")]
         [Display(Name = "Moéda de troca")]
-        public int Replacement { get; set; }
+        public CurrencyNameDTO Replacement { get; set; }
 
         [Column(TypeName = "string")]
         [Display(Name = "Data")]
@@ -30,15 +32,6 @@ namespace Currency.Analysis.Accenture.Domain.DTOs
         [Column(TypeName = "decimal")]
         [Display(Name = "Valor a receber")]
         public decimal? OutputValue { get; set; }
-
-        [Column(TypeName = "string")]
-        [Display(Name = "Moéda aplicada")]
-        public string AppliedName { get; set; }
-
-        [Column(TypeName = "string")]
-        [Display(Name = "Moéda de troca")]
-        public string ReplacementName { get; set; }
-
 
     }
 }
